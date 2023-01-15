@@ -2,18 +2,18 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const notes = require('./db/db.json');
-const uuid = require('./public/assets/js/uuid');
+const uuid = require('./docs/assets/js/uuid');
 
 const app = express();
 const PORT = 3002;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html'))); //Main landing page
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'docs/index.html'))); //Main landing page
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.html'))); //Notes page
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'docs/notes.html'))); //Notes page
 
 app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './db/db.json'));
