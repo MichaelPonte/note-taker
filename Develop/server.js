@@ -46,4 +46,18 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+    const id = req.params.id;
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            const parsedNotes = JSON.parse(data);
+            const filteredNotes = parsedNotes.filter(note => note.id !== id);
+
+            fs.writeFile('./db/db.json', JSON.stringify(filteredNotes, null, 4), (err) => err ? console.log(err) : console.log('Note deleted!'));
+        }
+    });
+});
 app.listen(PORT);
