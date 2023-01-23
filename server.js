@@ -19,9 +19,9 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'docs/notes.ht
 
 app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './db/db.json'));
-}); //API page for notes
+}); //Displays all saved notes to the webpage
 
-app.post('/api/notes', (req, res) => {
+app.post('/api/notes', (req, res) => { // API for saving the user created notes to the database
     const {title, text} = req.body;
 
     if (title && text) {
@@ -31,14 +31,14 @@ app.post('/api/notes', (req, res) => {
             id: uuid(),
         };
 
-        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        fs.readFile('./db/db.json', 'utf8', (err, data) => { //Reads the db.json file and parses it so it can be used
             if (err) {
                 console.log(err);
             } else {
                 const parsedNotes = JSON.parse(data);
                 parsedNotes.push(newNote);
 
-                fs.writeFile('./db/db.json', JSON.stringify(parsedNotes, null, 4), (err) => err ? console.log(err) : console.log('Note added!'));
+                fs.writeFile('./db/db.json', JSON.stringify(parsedNotes, null, 4), (err) => err ? console.log(err) : console.log('Note added!')); //Writes the new note to the db.json file
             }
         });
 

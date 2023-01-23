@@ -7,3 +7,4 @@ After entering a title and associated note, the user can save the note by clicki
 Clicking on an existing note will display the note on the right column.
 Clicking the "+" icon in the navigation bar will allow the user to enter a new note.
 After notes have been created, the user can click on the associated trash icon on the note to remove it from the list and database.
+Note: The webpage will need to be reloaded to show the updated list of notes.
