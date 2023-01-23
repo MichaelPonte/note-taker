@@ -5,7 +5,7 @@ const notes = require('./db/db.json');
 const uuid = require('./docs/assets/js/uuid');
 
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
